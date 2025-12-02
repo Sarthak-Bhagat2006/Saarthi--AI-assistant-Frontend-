@@ -1,0 +1,183 @@
+.chatWindow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: #0f172a;
+  height: 100vh;
+  padding: 0.5rem;
+}
+
+/* Navbar */
+.navbar {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid white;
+  border-radius: 10px;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.about-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  color: #f8fafc;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+}
+
+.about-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.nav-btn i {
+  font-size: 0.9rem;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.logout {
+  background: rgba(255, 60, 60, 0.2);
+}
+
+.logout:hover {
+  background: rgba(255, 60, 60, 0.35);
+}
+
+/* User input */
+.chatInput {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+.userBox {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+#submit {
+  height: 50px;
+  width: 50px;
+  background-color: #6366f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0.5rem 0;
+  padding: 0.2rem;
+  cursor: pointer;
+}
+
+.userBox input {
+  flex: 1;
+  min-width: 150px;
+  padding: 14px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: none;
+  font-size: 1rem;
+}
+
+.userBox input:focus {
+  outline: none;
+}
+
+.assistant-note {
+  color: #6366f1;
+  text-align: center;
+  margin: 4px 8px 12px;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0.8rem;
+  }
+
+  .btns {
+    margin: 0.5rem 0;
+    gap: 0.5rem;
+  }
+
+  .userBox {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  #submit {
+    width: 45px;
+    height: 45px;
+  }
+
+  .userBox input {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .nav-btn {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  .userBox input {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  #submit {
+    width: 40px;
+    height: 40px;
+  }
+}

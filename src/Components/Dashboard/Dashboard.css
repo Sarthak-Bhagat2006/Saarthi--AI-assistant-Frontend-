@@ -1,0 +1,10 @@
+.dashboard {
+  display: flex;
+  height: 100vh; /* full screen */
+  width: 100%;
+  background: #1a1a1a; /* match your app theme */
+}
+
+.dashboard > * {
+  flex-shrink: 0;
+}
