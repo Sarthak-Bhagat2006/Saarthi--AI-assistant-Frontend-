@@ -36,14 +36,17 @@ function ChatWindow() {
     setLoading(true);
     setNewChat(false);
     try {
-      const response = await fetch("http://localhost:8080/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ message: prompt, threadId: currThreadId }),
-      });
+      const response = await fetch(
+        "https://saarthi-ai-assistant-backend-2.onrender.com/api/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ message: prompt, threadId: currThreadId }),
+        }
+      );
 
       const res = await response.json();
       setReply(res.reply);

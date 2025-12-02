@@ -32,14 +32,17 @@ function Register() {
     setErrorMsg("");
 
     try {
-      const res = await fetch("http://localhost:8080/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: form.email,
-          password: form.password,
-        }),
-      });
+      const res = await fetch(
+        "https://saarthi-ai-assistant-backend-2.onrender.com/api/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: form.email,
+            password: form.password,
+          }),
+        }
+      );
 
       const response = await res.json();
       console.log(response);
@@ -72,15 +75,18 @@ function Register() {
     setErrorMsg("");
 
     try {
-      const res = await fetch("http://localhost:8080/api/auth/signUp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: form.name,
-          email: form.email,
-          password: form.password,
-        }),
-      });
+      const res = await fetch(
+        "https://saarthi-ai-assistant-backend-2.onrender.com/api/signUp",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: form.name,
+            email: form.email,
+            password: form.password,
+          }),
+        }
+      );
 
       const response = await res.json();
       console.log(response);

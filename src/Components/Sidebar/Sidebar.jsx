@@ -20,12 +20,15 @@ function Sidebar() {
     const token = localStorage.getItem("token");
     if (!token) return;
     try {
-      const response = await fetch("http://localhost:8080/api/thread", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "https://saarthi-ai-assistant-backend-2.onrender.com/api/thread",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const res = await response.json();
       //we have to store ThreadId's and title threadId use to get previous chat display
 
@@ -57,7 +60,7 @@ function Sidebar() {
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(
-        `http://localhost:8080/api/thread/${newThreadId}`,
+        `https://saarthi-ai-assistant-backend-2.onrender.com/api/thread/${newThreadId}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -78,7 +81,7 @@ function Sidebar() {
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(
-        `http://localhost:8080/api/thread/${threadId}`,
+        `https://saarthi-ai-assistant-backend-2.onrender.com/api/thread/${threadId}`,
         {
           method: "DELETE",
           headers: {

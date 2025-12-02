@@ -11,10 +11,13 @@ function Home() {
   const navigate = useNavigate();
   const handleGuest = async () => {
     try {
-      const res = await fetch("http://localhost:8080/api/auth/guest", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      });
+      const res = await fetch(
+        "https://saarthi-ai-assistant-backend-2.onrender.com/api/auth/guest",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
       const data = await res.json();
 
