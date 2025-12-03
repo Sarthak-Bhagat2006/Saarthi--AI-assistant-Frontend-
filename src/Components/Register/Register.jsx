@@ -89,34 +89,26 @@ function Register() {
       );
 
       const response = await res.json();
-      console.log(response);
+      console.log("Register response:", response);
 
-      // If error
       if (!response.success) {
         setErrorMsg(response.message || "Something went wrong");
         setIsError(true);
         return;
       }
 
-      // Save token
-      localStorage.setItem("token", response.token);
+      // ✅ Save token and user correctly
+      localStorage.setItem("token", response.token); // no quotes
       localStorage.setItem("user", JSON.stringify(response.user));
 
-      navigate("/dashboard");
-      window.location.reload();
-
-      // Mark as logged in
       setIsLogin(true);
-
-      // Navigate to dashboard
-      navigate("/dashboard");
+      navigate("/dashboard"); // only once
     } catch (error) {
       console.log(error);
       setErrorMsg(error.message);
       setIsError(true);
     }
   };
-
   return (
     <div className="register-container">
       <div className="card">
