@@ -12,7 +12,7 @@ function Home() {
   const handleGuest = async () => {
     try {
       const res = await fetch(
-        "https://saarthi-ai-assistant-backend-3.onrender.com/api/auth/guest",
+        "https://saarthi-ai-assistant-backend-4.onrender.com/api/auth/guest",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

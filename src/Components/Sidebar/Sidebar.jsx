@@ -21,7 +21,7 @@ function Sidebar() {
     if (!token) return;
     try {
       const response = await fetch(
-        "https://saarthi-ai-assistant-backend-3.onrender.com/api/thread",
+        "https://saarthi-ai-assistant-backend-4.onrender.com/api/thread",
         {
           headers: {
             "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function Sidebar() {
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(
-        `https://saarthi-ai-assistant-backend-3.onrender.com0/api/thread/${newThreadId}`,
+        `https://saarthi-ai-assistant-backend-4.onrender.com0/api/thread/${newThreadId}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -81,7 +81,7 @@ function Sidebar() {
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(
-        `https://saarthi-ai-assistant-backend-3.onrender.com/api/thread/${threadId}`,
+        `https://saarthi-ai-assistant-backend-4.onrender.com/api/thread/${threadId}`,
         {
           method: "DELETE",
           headers: {
