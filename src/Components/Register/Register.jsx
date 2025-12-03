@@ -60,6 +60,7 @@ function Register() {
 
       // Navigate to dashboard
       navigate("/dashboard");
+      window.location.reload();
     } catch (error) {
       console.log(error);
       setErrorMsg(error.message);
@@ -102,9 +103,9 @@ function Register() {
       localStorage.setItem("user", JSON.stringify(response.user));
 
       navigate("/dashboard");
-
       // Mark as logged in
       setIsLogin(true);
+      window.location.reload();
     } catch (error) {
       console.log(error);
       setErrorMsg(error.message);
