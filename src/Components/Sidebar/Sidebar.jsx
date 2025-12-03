@@ -60,7 +60,7 @@ function Sidebar() {
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(
-        `https://saarthi-ai-assistant-backend-3.onrender.com/api/thread/${newThreadId}`,
+        `https://saarthi-ai-assistant-backend-3.onrender.com0/api/thread/${newThreadId}`,
         {
           headers: {
             "Content-Type": "application/json",

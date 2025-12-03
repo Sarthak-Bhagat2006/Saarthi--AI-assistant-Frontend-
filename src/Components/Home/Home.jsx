@@ -31,7 +31,6 @@ function Home() {
 
       // Redirect
       navigate("/dashboard");
-      window.location.reload();
 
       // Auto logout after 5 mins
       setTimeout(() => {
