@@ -41,6 +41,7 @@ function Register() {
             email: form.email,
             password: form.password,
           }),
+          credentials: "include",
         }
       );
 
@@ -85,6 +86,7 @@ function Register() {
             email: form.email,
             password: form.password,
           }),
+          credentials: "include",
         }
       );
 
