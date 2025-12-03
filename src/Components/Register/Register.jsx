@@ -76,7 +76,7 @@ function Register() {
 
     try {
       const res = await fetch(
-        "https://saarthi-ai-assistant-backend-2.onrender.com/api/signUp",
+        "https://saarthi-ai-assistant-backend-2.onrender.com/api/auth/signUp",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

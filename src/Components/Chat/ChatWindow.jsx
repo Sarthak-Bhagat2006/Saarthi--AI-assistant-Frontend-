@@ -102,7 +102,7 @@ function ChatWindow() {
 
         <div className="btns">
           <button className="nav-btn logout" onClick={handleLogout}>
-            <span>Logout</span>
+            <span>Logout</span>x
             <i className="fa-solid fa-arrow-right-from-bracket"></i>
           </button>
         </div>
