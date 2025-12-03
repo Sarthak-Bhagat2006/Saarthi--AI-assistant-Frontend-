@@ -37,7 +37,7 @@ function ChatWindow() {
     setNewChat(false);
     try {
       const response = await fetch(
-        "https://saarthi-ai-assistant-backend-2.onrender.com/api/chat",
+        "https://saarthi-ai-assistant-backend-3.onrender.com/api/chat",
         {
           method: "POST",
           headers: {
