@@ -14,19 +14,19 @@ Core features are implemented and working. Further enhancements and optimisation
 
 ## ✨ Features
 
-- 💬 **Real-Time Chat** – Engage with Saarthi AI for contextual, follow-up responses.    
-- ⚡ **Dynamic AI Responses** – Messages rendered in real-time from Gemma-3N AI.  
-- 📊 **Threaded Conversations** – Stores and displays messages in chat threads.  
-- 📱 **Responsive UI** – Optimized for desktop and mobile devices.  
-- 🏗️ **Seamless Backend Integration** – Connects with REST APIs and JWT-protected endpoints.
+-  **Real-Time Chat** – Engage with Saarthi AI for contextual, follow-up responses.    
+-  **Dynamic AI Responses** – Messages rendered in real-time from Gemma-3N AI.  
+-  **Threaded Conversations** – Stores and displays messages in chat threads.  
+-  **Responsive UI** – Optimized for desktop and mobile devices.  
+-  **Seamless Backend Integration** – Connects with REST APIs and JWT-protected endpoints.
 
 ---
 
 ## 🚀 Future Enhancements
 
-- 🗣️ Voice-based AI interaction.   
-- 📈 Analytics dashboard for user interactions and AI activity.  
-- 🎨 Improved mobile-first UI and accessibility features.
+-  Voice-based AI interaction.   
+-  Analytics dashboard for user interactions and AI activity.  
+-  Improved mobile-first UI and accessibility features.
 
 ---
 
