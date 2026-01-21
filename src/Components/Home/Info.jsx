@@ -13,11 +13,6 @@ function Info() {
           Whether you're learning, building, or experimenting, Saarthi adapts to
           your intent and helps you move forward.
         </h3>
-        <h3>
-          The system is deployed using a complete Docker-based container
-          architecture, giving it a stable, isolated, and scalable environment —
-          the same approach used by modern production-grade AI applications.
-        </h3>
       </div>
     </div>
   );
