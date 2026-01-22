@@ -39,4 +39,26 @@ Core features are implemented and working. Further enhancements and optimisation
 - React Router (Navigation)  
 
 **Tools**
-- Git & GitHub  
+- Git & GitHub
+
+- ## 🤝 How to Contribute
+
+Contributions are welcome! If you’d like to improve **ModernMentor**, you can follow the steps below 🚀
+
+```bash
+# Fork the repository on GitHub, then clone your fork
+git clone <url>
+
+# Install dependencies
+npm install
+
+# Run the project locally
+npm start
+
+# Create a new branch for your changes
+git checkout -b feature/your-feature-name
+
+# Commit and push your changes
+git add .
+git commit -m "Describe your change"
+git push origin feature/your-feature-name
