@@ -111,7 +111,12 @@ function Sidebar() {
         className="sidebar-toggle"
         onClick={() => setIsSidebarOpen((prev) => !prev)} // toggle true/false
       >
-        {isSidebarOpen ? "×" : "☰"} {/* Show × when open, ☰ when closed */}
+        {isSidebarOpen ? (
+          <i class="fa-solid fa-xmark"></i>
+        ) : (
+          <i class="fa-solid fa-bars"></i>
+        )}{" "}
+        {}
       </button>
 
       <section className={`sidebar ${isSidebarOpen ? "show" : ""}`}>
