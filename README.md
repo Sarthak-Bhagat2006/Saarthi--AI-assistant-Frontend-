@@ -1,16 +1,64 @@
-# React + Vite
+# Saarthi AI Assistant
+## 🔗 Live Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+👉 [https://Saarthi-Live.com](https://saarthi-ai-assistant-frontend.vercel.app/#/)
 
-Currently, two official plugins are available:
+<img width="1440" height="900" alt="Screenshot 2026-01-08 at 5 48 27 PM" src="https://github.com/user-attachments/assets/6a3e9ee1-21aa-426d-8688-24cc7564e21a" />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Saarthi Frontend** is the user interface for the Saarthi AI Assistant platform. Users can chat with the AI. The interface is responsive, real-time, and designed to handle dynamic AI responses.
 
-## React Compiler
+## 🚧 Project Status
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🟢 **Functional (MVP Complete)**  
+Core features are implemented and working. Further enhancements and optimisations are planned
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-  **Real-Time Chat** – Engage with Saarthi AI for contextual, follow-up responses.    
+-  **Dynamic AI Responses** – Messages rendered in real-time from Gemma-3N AI.  
+-  **Threaded Conversations** – Stores and displays messages in chat threads.  
+-  **Responsive UI** – Optimized for desktop and mobile devices.  
+-  **Seamless Backend Integration** – Connects with REST APIs and JWT-protected endpoints.
+
+---
+
+## 🚀 Future Enhancements
+
+-  Voice-based AI interaction.   
+-  Analytics dashboard for user interactions and AI activity.  
+-  Improved mobile-first UI and accessibility features.
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend**
+- React.js  
+- Tailwind CSS  
+- Axios (API requests)  
+- React Router (Navigation)  
+
+**Tools**
+- Git & GitHub
+
+- ## 🤝 How to Contribute
+
+Contributions are welcome! If you’d like to improve **ModernMentor**, you can follow the steps below 🚀
+
+```bash
+# Fork the repository on GitHub, then clone your fork
+git clone <url>
+
+# Install dependencies
+npm install
+
+# Run the project locally
+npm start
+
+# Create a new branch for your changes
+git checkout -b feature/your-feature-name
+
+# Commit and push your changes
+git add .
+git commit -m "Describe your change"
+git push origin feature/your-feature-name
