@@ -8,7 +8,7 @@
 }
 /* FORM CARD */
 .card {
-  background: #ffffff;
+  background: #fff;
   width: 380px;
   padding: 30px 28px;
   border-radius: 16px;
@@ -104,4 +104,32 @@
 .error p {
   color: red;
   font-style: italic;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 0;
+  margin-top: 10px;
+  background: #fff;
+  color: #4338ca;
+  border: 1px soild gray;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.google-btn:hover {
+  background: #f7f8f8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
 }

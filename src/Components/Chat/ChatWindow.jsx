@@ -4,6 +4,7 @@ import { MyContext } from "../../Context/MyContext.jsx";
 import { useContext, useState, useEffect } from "react";
 import { PropagateLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 function ChatWindow() {
   const {
@@ -27,14 +28,24 @@ function ChatWindow() {
 
   const getReply = async () => {
     if (!prompt) return;
+
     const token = localStorage.getItem("token");
     if (!token) {
       alert("You are not authenticated. Please login.");
       navigate("/");
       return;
     }
+
+    //ENSURE threadId exists
+    let threadId = currThreadId;
+    if (!threadId) {
+      threadId = uuidv4();
+      setCurrThreadId(threadId);
+    }
+
     setLoading(true);
     setNewChat(false);
+
     try {
       const response = await fetch(
         "https://saarthi-ai-assistant-backend-4.onrender.com/api/chat",
@@ -44,11 +55,20 @@ function ChatWindow() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ message: prompt, threadId: currThreadId }),
+          body: JSON.stringify({
+            message: prompt,
+            threadId: threadId,
+          }),
         }
       );
 
       const res = await response.json();
+
+      if (!response.ok) {
+        console.error("Chat error:", res);
+        return;
+      }
+
       setReply(res.reply);
     } catch (e) {
       console.log("Fetch Error:", e);
