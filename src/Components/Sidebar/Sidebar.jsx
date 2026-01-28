@@ -112,9 +112,9 @@ function Sidebar() {
         onClick={() => setIsSidebarOpen((prev) => !prev)} // toggle true/false
       >
         {isSidebarOpen ? (
-          <i class="fa-solid fa-xmark"></i>
+          <i className="fa-solid fa-xmark"></i>
         ) : (
-          <i class="fa-solid fa-bars"></i>
+          <i className="fa-solid fa-bars"></i>
         )}{" "}
         {}
       </button>

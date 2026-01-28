@@ -2,6 +2,8 @@ import { MyContext } from "../../Context/MyContext";
 import "./Register.css";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useGoogleLogin } from "@react-oauth/google";
+import api from "../../api";
 
 function Register() {
   const { isLogin, setIsLogin, isRegister, setIsRegister } =
@@ -16,6 +18,42 @@ function Register() {
 
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+
+  const responseGoogle = async (authResult) => {
+    try {
+      if (!authResult.code) {
+        throw new Error("Google authentication failed");
+      }
+
+      // Send code to backend
+      const response = await api(authResult.code);
+      console.log("Google backend response:", response);
+
+      if (!response.success) {
+        setErrorMsg(response.message || "Google login failed");
+        setIsError(true);
+        return;
+      }
+
+      // Save auth data
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("user", JSON.stringify(response.user));
+
+      setIsLogin(true);
+
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Google login error:", error);
+      setErrorMsg("Google login failed");
+      setIsError(true);
+    }
+  };
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: responseGoogle,
+    onError: responseGoogle,
+    flow: "auth-code",
+  });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -152,7 +190,7 @@ function Register() {
           </label>
 
           <label className="label">
-            password
+            Password
             <input
               type="password"
               name="password"
@@ -180,6 +218,17 @@ function Register() {
         ) : (
           ""
         )}
+
+        <div className="googleLogin">
+          <button className="google-btn" onClick={googleLogin}>
+            Continue with{" "}
+            <img
+              src="https://developers.google.com/identity/images/g-logo.png"
+              alt="Google"
+              className="google-icon"
+            />
+          </button>
+        </div>
       </div>
     </div>
   );
