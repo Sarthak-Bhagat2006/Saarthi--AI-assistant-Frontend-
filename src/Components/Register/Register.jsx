@@ -50,9 +50,10 @@ function Register() {
   };
 
   const googleLogin = useGoogleLogin({
+    flow: "auth-code",
+    redirect_uri: window.location.origin,
     onSuccess: responseGoogle,
     onError: responseGoogle,
-    flow: "auth-code",
   });
 
   const handleChange = (e) => {
