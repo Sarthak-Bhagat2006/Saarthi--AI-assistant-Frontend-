@@ -143,6 +143,17 @@ function ChatWindow() {
           />
 
           <div
+            id="add-doc"
+            style={{ cursor: loading ? "not-allowed" : "pointer" }}
+          >
+            {loading ? (
+              <i class="fa-solid fa-file-circle-minus"></i>
+            ) : (
+              <i class="fa-solid fa-file"></i>
+            )}
+          </div>
+
+          <div
             id="submit"
             onClick={!loading ? getReply : null}
             style={{ cursor: loading ? "not-allowed" : "pointer" }}
@@ -154,7 +165,6 @@ function ChatWindow() {
             )}
           </div>
         </div>
-
         <p className="assistant-note">
           Sarthi can make mistakes. It might take some time to answer.
         </p>
