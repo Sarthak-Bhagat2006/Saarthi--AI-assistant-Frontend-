@@ -202,6 +202,8 @@ function Register() {
           <div className="error">
             <p>{isError ? errorMsg : ""}</p>
           </div>
+          {isLogin ? <a href="#">Forgot password?</a> : <p></p>}
+
           {!isLogin ? (
             <button type="submit" className="btn">
               SignUp

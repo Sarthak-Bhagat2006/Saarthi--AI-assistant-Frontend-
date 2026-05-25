@@ -15,6 +15,9 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   animation: fadeIn 0.4s ease;
 }
+a {
+  color: blue;
+}
 
 @keyframes fadeIn {
   from {
