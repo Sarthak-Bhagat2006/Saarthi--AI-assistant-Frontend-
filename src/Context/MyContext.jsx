@@ -18,6 +18,7 @@ export const MyProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [isRegister, setIsRegister] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+  const [isForgotPass, setForgotPass] = useState(false);
 
   // Load token and user from localStorage
   useEffect(() => {
@@ -64,6 +65,8 @@ export const MyProvider = ({ children }) => {
         setIsRegister,
         isLogin,
         setIsLogin,
+        isForgotPass,
+        setForgotPass,
       }}
     >
       {children}
