@@ -6,7 +6,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import api from "../../api";
 
 function Register() {
-  const { isLogin, setIsLogin, isRegister, setIsRegister } =
+  const { isLogin, setIsLogin, isForgotPass, setForgotPass } =
     useContext(MyContext);
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -62,6 +62,50 @@ function Register() {
 
   const checkLogin = () => {
     setIsLogin(true);
+
+    setForgotPass(false);
+  };
+
+  const checkRegister = () => {
+    setIsLogin(false);
+
+    setForgotPass(false);
+  };
+
+  const resetPass = (e) => {
+    setForgotPass(true);
+  };
+
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch(
+        "https://saarthi-ai-assistant-backend-4.onrender.com/api/auth/forgot-password",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: form.email,
+          }),
+        }
+      );
+
+      const response = await res.json();
+
+      if (!response.success) {
+        setErrorMsg(response.message);
+        setIsError(true);
+        return;
+      }
+
+      alert("Reset link sent to your email");
+    } catch (error) {
+      setErrorMsg(error.message);
+      setIsError(true);
+    }
   };
 
   const handleLogin = async (e) => {
@@ -155,83 +199,131 @@ function Register() {
   return (
     <div className="register-container">
       <div className="card">
-        {isLogin ? (
-          <h1 className="title">Login as User</h1>
-        ) : (
-          <h1 className="title">Register as User</h1>
-        )}
-        <form
-          action="submit"
-          onSubmit={isLogin ? handleLogin : handleRegister}
-          autoComplete="off"
-        >
-          {isLogin ? (
-            ""
-          ) : (
+        <h1 className="title">
+          {isForgotPass
+            ? "Forgot Password"
+            : isLogin
+            ? "Login as User"
+            : "Register as User"}
+        </h1>
+
+        {isForgotPass ? (
+          <form onSubmit={handleForgotPassword}>
             <label className="label">
-              Username
+              Email
               <input
-                name="name"
-                value={form.name}
-                placeholder="JohnDoe123"
+                type="email"
+                name="email"
+                value={form.email}
+                placeholder="you@company.com"
                 onChange={handleChange}
               />
             </label>
-          )}
 
-          <label className="label">
-            Email
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              placeholder="you@company.com"
-              onChange={handleChange}
-            />
-          </label>
+            <div className="error">
+              <p>{isError ? errorMsg : ""}</p>
+            </div>
 
-          <label className="label">
-            Password
-            <input
-              type="password"
-              name="password"
-              value={form.password}
-              onChange={handleChange}
-            />
-          </label>
-          <div className="error">
-            <p>{isError ? errorMsg : ""}</p>
-          </div>
-          {isLogin ? <a href="#">Forgot password?</a> : <p></p>}
-
-          {!isLogin ? (
             <button type="submit" className="btn">
-              SignUp
+              Send Reset Link
             </button>
-          ) : (
-            <button type="submit" className="btn">
-              Login
-            </button>
-          )}
-        </form>
-        {!isLogin ? (
-          <div className="footer">
-            Already have an account? <a onClick={checkLogin}>Log in</a>
-          </div>
+
+            <div className="footer">
+              Remember password?
+              <button type="button" onClick={checkLogin}>
+                Login
+              </button>
+            </div>
+          </form>
         ) : (
-          ""
+          // LOGIN / REGISTER FORM
+
+          <form onSubmit={isLogin ? handleLogin : handleRegister}>
+            {!isLogin && (
+              <label className="label">
+                Username
+                <input
+                  name="name"
+                  value={form.name}
+                  placeholder="JohnDoe123"
+                  onChange={handleChange}
+                />
+              </label>
+            )}
+
+            <label className="label">
+              Email
+              <input
+                type="email"
+                name="email"
+                value={form.email}
+                placeholder="you@company.com"
+                onChange={handleChange}
+              />
+            </label>
+
+            <label className="label">
+              Password
+              <input
+                type="password"
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+              />
+            </label>
+
+            <div className="error">
+              <p>{isError ? errorMsg : ""}</p>
+            </div>
+
+            {isLogin && (
+              <div className="footer">
+                <button type="button" onClick={resetPass}>
+                  Forgot Password?
+                </button>
+              </div>
+            )}
+
+            <button type="submit" className="btn">
+              {isLogin ? "Login" : "Sign Up"}
+            </button>
+          </form>
         )}
 
-        <div className="googleLogin">
-          <button className="google-btn" onClick={googleLogin}>
-            Continue with{" "}
-            <img
-              src="https://developers.google.com/identity/images/g-logo.png"
-              alt="Google"
-              className="google-icon"
-            />
-          </button>
-        </div>
+        {!isForgotPass && (
+          <div className="footer">
+            {isLogin ? (
+              <>
+                Don't have an account?
+                <button type="button" onClick={checkRegister}>
+                  Register
+                </button>
+              </>
+            ) : (
+              <>
+                Already have an account?
+                <button type="button" onClick={checkLogin}>
+                  Login
+                </button>
+              </>
+            )}
+          </div>
+        )}
+
+        {/* GOOGLE LOGIN */}
+
+        {!isForgotPass && (
+          <div className="googleLogin">
+            <button className="google-btn" onClick={googleLogin}>
+              Continue with
+              <img
+                src="https://developers.google.com/identity/images/g-logo.png"
+                alt="Google"
+                className="google-icon"
+              />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
