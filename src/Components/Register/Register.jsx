@@ -62,18 +62,19 @@ function Register() {
 
   const checkLogin = () => {
     setIsLogin(true);
-
+    setIsError(false);
     setForgotPass(false);
   };
 
   const checkRegister = () => {
     setIsLogin(false);
-
+    setIsError(false);
     setForgotPass(false);
   };
 
   const resetPass = (e) => {
     setForgotPass(true);
+    setIsError(false);
   };
 
   const handleForgotPassword = async (e) => {
@@ -230,9 +231,9 @@ function Register() {
 
             <div className="footer">
               Remember password?
-              <button type="button" onClick={checkLogin}>
+              <a type="button" onClick={checkLogin}>
                 Login
-              </button>
+              </a>
             </div>
           </form>
         ) : (
@@ -278,9 +279,9 @@ function Register() {
 
             {isLogin && (
               <div className="footer">
-                <button type="button" onClick={resetPass}>
+                <a type="button" onClick={resetPass}>
                   Forgot Password?
-                </button>
+                </a>
               </div>
             )}
 
@@ -295,16 +296,16 @@ function Register() {
             {isLogin ? (
               <>
                 Don't have an account?
-                <button type="button" onClick={checkRegister}>
+                <a type="button" onClick={checkRegister}>
                   Register
-                </button>
+                </a>
               </>
             ) : (
               <>
                 Already have an account?
-                <button type="button" onClick={checkLogin}>
+                <a type="button" onClick={checkLogin}>
                   Login
-                </button>
+                </a>
               </>
             )}
           </div>
