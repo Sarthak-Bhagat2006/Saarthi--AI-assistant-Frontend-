@@ -5,6 +5,7 @@ import { useContext, useState, useEffect } from "react";
 import { PropagateLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import "dotenv/config";
 
 function ChatWindow() {
   const {
@@ -46,21 +47,20 @@ function ChatWindow() {
     setLoading(true);
     setNewChat(false);
 
+    const backend_URL =
+      import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
     try {
-      const response = await fetch(
-        "https://saarthi-ai-assistant-backend-4.onrender.com/api/chat",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            message: prompt,
-            threadId: threadId,
-          }),
-        }
-      );
+      const response = await fetch(`${backend_URL}/api/chat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          message: prompt,
+          threadId: threadId,
+        }),
+      });
 
       const res = await response.json();
 

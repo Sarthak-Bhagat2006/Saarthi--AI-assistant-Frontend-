@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import api from "../../api";
-
+import "dotenv/config";
 function Register() {
   const { isLogin, setIsLogin, isForgotPass, setForgotPass } =
     useContext(MyContext);
@@ -18,6 +18,9 @@ function Register() {
 
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+
+  const backend_URL =
+    import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
 
   const responseGoogle = async (authResult) => {
     try {
@@ -81,18 +84,15 @@ function Register() {
     e.preventDefault();
 
     try {
-      const res = await fetch(
-        "https://saarthi-ai-assistant-backend-4.onrender.com/api/auth/forgot-password",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: form.email,
-          }),
-        }
-      );
+      const res = await fetch(`${backend_URL}/api/auth/forgot-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: form.email,
+        }),
+      });
 
       const response = await res.json();
 
@@ -116,17 +116,14 @@ function Register() {
     setErrorMsg("");
 
     try {
-      const res = await fetch(
-        "https://saarthi-ai-assistant-backend-4.onrender.com/api/auth/login",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: form.email,
-            password: form.password,
-          }),
-        }
-      );
+      const res = await fetch(`${backend_URL}/api/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: form.email,
+          password: form.password,
+        }),
+      });
 
       const response = await res.json();
       console.log(response);
@@ -159,18 +156,15 @@ function Register() {
     setErrorMsg("");
 
     try {
-      const res = await fetch(
-        "https://saarthi-ai-assistant-backend-4.onrender.com/api/auth/signUp",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            username: form.name,
-            email: form.email,
-            password: form.password,
-          }),
-        }
-      );
+      const res = await fetch(`${backend_URL}/api/auth/signUp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: form.name,
+          email: form.email,
+          password: form.password,
+        }),
+      });
 
       const response = await res.json();
       console.log(response);

@@ -4,20 +4,20 @@ import { MyContext } from "../../Context/MyContext";
 import { useNavigate } from "react-router-dom";
 import Info from "./Info";
 import Register from "../Register/Register";
-
+import "dotenv/config";
 function Home() {
   const { setUser, setToken, isRegister, setIsRegister, isLogin, setIsLogin } =
     useContext(MyContext);
   const navigate = useNavigate();
+
+  const backend_URL =
+    import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
   const handleGuest = async () => {
     try {
-      const res = await fetch(
-        "https://saarthi-ai-assistant-backend-4.onrender.com/api/auth/guest",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      const res = await fetch(`${backend_URL}/api/auth/guest`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
 
       const data = await res.json();
 

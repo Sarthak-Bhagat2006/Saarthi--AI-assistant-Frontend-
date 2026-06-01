@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import "./Sidebar.css";
 import { MyContext } from "../../Context/MyContext";
 import { v1 as uuidv1 } from "uuid";
-
+import "dotenv/config";
 function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const {
@@ -16,19 +16,19 @@ function Sidebar() {
     setReply,
   } = useContext(MyContext);
 
+  const backend_URL =
+    import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
+
   const getAllThreads = async () => {
     const token = localStorage.getItem("token");
     if (!token) return;
     try {
-      const response = await fetch(
-        "https://saarthi-ai-assistant-backend-4.onrender.com/api/thread",
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch(`${backend_URL}/api/thread`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const res = await response.json();
       //we have to store ThreadId's and title threadId use to get previous chat display
 
@@ -59,15 +59,12 @@ function Sidebar() {
     setCurrThreadId(newThreadId);
     const token = localStorage.getItem("token");
     try {
-      const response = await fetch(
-        `https://saarthi-ai-assistant-backend-4.onrender.com/api/thread/${newThreadId}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch(`${backend_URL}/api/thread/${newThreadId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const res = await response.json();
       console.log(res);
       setPrevChats(res);
@@ -80,16 +77,13 @@ function Sidebar() {
   const deleteThread = async (threadId) => {
     const token = localStorage.getItem("token");
     try {
-      const response = await fetch(
-        `https://saarthi-ai-assistant-backend-4.onrender.com/api/thread/${threadId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch(`${backend_URL}/api/thread/${threadId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const res = await response.json();
       console.log(res);
 
