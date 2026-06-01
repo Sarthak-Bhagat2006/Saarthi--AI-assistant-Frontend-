@@ -5,7 +5,6 @@ import { useContext, useState, useEffect } from "react";
 import { PropagateLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import "dotenv/config";
 
 function ChatWindow() {
   const {

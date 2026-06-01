@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import api from "../../api";
-import "dotenv/config";
+
 function Register() {
   const { isLogin, setIsLogin, isForgotPass, setForgotPass } =
     useContext(MyContext);

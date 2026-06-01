@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import "./Sidebar.css";
 import { MyContext } from "../../Context/MyContext";
 import { v1 as uuidv1 } from "uuid";
-import "dotenv/config";
 function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const {

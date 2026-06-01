@@ -4,7 +4,7 @@ import { MyContext } from "../../Context/MyContext";
 import { useNavigate } from "react-router-dom";
 import Info from "./Info";
 import Register from "../Register/Register";
-import "dotenv/config";
+
 function Home() {
   const { setUser, setToken, isRegister, setIsRegister, isLogin, setIsLogin } =
     useContext(MyContext);
