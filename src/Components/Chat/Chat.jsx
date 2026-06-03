@@ -13,38 +13,38 @@ function Chat() {
   const [typedText, setTypedText] = useState("");
   const [lastAssistantText, setLastAssistantText] = useState("");
 
-  // // Detect NEW GPT message
-  // useEffect(() => {
-  //   if (!prevChats || prevChats.length === 0) return;
+  // Detect NEW API message
+  useEffect(() => {
+    if (!prevChats || prevChats.length === 0) return;
 
-  //   const lastMsg = prevChats[prevChats.length - 1];
+    const lastMsg = prevChats[prevChats.length - 1];
 
-  //   // Only start typing if a NEW assistant message appears
-  //   if (lastMsg.role === "assistant" && lastMsg.content !== lastAssistantText) {
-  //     setLastAssistantText(lastMsg.content);
-  //     setIsTyping(true);
-  //     setTypedText("");
-  //     setTypingIndex(0);
-  //   }
-  // }, [prevChats]);
+    // Only start typing if a NEW assistant message appears
+    if (lastMsg.role === "assistant" && lastMsg.content !== lastAssistantText) {
+      setLastAssistantText(lastMsg.content);
+      setIsTyping(true);
+      setTypedText("");
+      setTypingIndex(0);
+    }
+  }, [prevChats]);
 
-  // // Word-by-word typing
-  // useEffect(() => {
-  //   if (!isTyping) return;
+  // Word-by-word typing
+  useEffect(() => {
+    if (!isTyping) return;
 
-  //   const words = lastAssistantText.split(" ");
+    const words = lastAssistantText.split(" ");
 
-  //   if (typingIndex < words.length) {
-  //     const timeout = setTimeout(() => {
-  //       setTypedText((prev) => prev + words[typingIndex] + " ");
-  //       setTypingIndex((i) => i + 1);
-  //     }, 10); // typing speed
+    if (typingIndex < words.length) {
+      const timeout = setTimeout(() => {
+        setTypedText((prev) => prev + words[typingIndex] + " ");
+        setTypingIndex((i) => i + 1);
+      }, 70); // typing speed
 
-  //     return () => clearTimeout(timeout);
-  //   } else {
-  //     setIsTyping(false);
-  //   }
-  // }, [typingIndex, isTyping, lastAssistantText]);
+      return () => clearTimeout(timeout);
+    } else {
+      setIsTyping(false);
+    }
+  }, [typingIndex, isTyping, lastAssistantText]);
 
   return (
     <>
