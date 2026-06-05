@@ -12,6 +12,7 @@ function Chat() {
   const [typingIndex, setTypingIndex] = useState(0);
   const [typedText, setTypedText] = useState("");
   const [lastAssistantText, setLastAssistantText] = useState("");
+  const [copiedIndex, setCopiedIndex] = useState(null);
 
   // Detect NEW API message
   useEffect(() => {
@@ -46,6 +47,20 @@ function Chat() {
     }
   }, [typingIndex, isTyping, lastAssistantText]);
 
+  const copyMessage = async (text, idx) => {
+    try {
+      await navigator.clipboard.writeText(text);
+
+      setCopiedIndex(idx);
+
+      setTimeout(() => {
+        setCopiedIndex(null);
+      }, 1500);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       {newChat && (
@@ -67,7 +82,20 @@ function Chat() {
               key={idx}
             >
               {chat.role === "user" ? (
-                <p className="userMessage">{chat.content}</p>
+                <div className="userMessage">
+                  {chat.content}
+
+                  <button
+                    className="copyBtn"
+                    onClick={() => copyMessage(chat.content, idx)}
+                  >
+                    {copiedIndex === idx ? (
+                      <i className="fa-solid fa-check"></i>
+                    ) : (
+                      <i className="fa-solid fa-copy"></i>
+                    )}
+                  </button>
+                </div>
               ) : (
                 <div className="gptMessage">
                   <ReactMarkdown
@@ -76,6 +104,17 @@ function Chat() {
                   >
                     {displayText}
                   </ReactMarkdown>
+
+                  <button
+                    className="copyBtn"
+                    onClick={() => copyMessage(chat.content, idx)}
+                  >
+                    {copiedIndex === idx ? (
+                      <i className="fa-solid fa-check"></i>
+                    ) : (
+                      <i className="fa-solid fa-copy"></i>
+                    )}
+                  </button>
                 </div>
               )}
             </div>

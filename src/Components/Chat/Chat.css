@@ -43,11 +43,13 @@
 .userDiv {
   display: flex;
   justify-content: flex-end;
+  position: relative;
 }
 
 .gptDiv {
   display: flex;
   justify-content: flex-start;
+  position: relative;
 }
 
 /* Message design */
@@ -111,4 +113,25 @@
     font-size: 0.75rem;
     padding: 8px;
   }
+}
+
+.copyBtn {
+  position: absolute;
+  bottom: -25px;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.userMessage:hover .copyBtn,
+.gptMessage:hover .copyBtn {
+  opacity: 1;
+}
+
+.copyBtn:hover {
+  color: white;
 }
