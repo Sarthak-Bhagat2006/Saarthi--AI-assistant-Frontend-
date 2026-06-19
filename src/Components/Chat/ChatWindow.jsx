@@ -5,7 +5,7 @@ import { useContext, useState, useEffect } from "react";
 import { PropagateLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-
+import UserInfo from "../UserInfo.jsx";
 function ChatWindow() {
   const {
     prompt,
@@ -120,6 +120,7 @@ function ChatWindow() {
         </button>
 
         <div className="btns">
+          <UserInfo />
           <button className="nav-btn logout" onClick={handleLogout}>
             <span>Logout</span>
             <i className="fa-solid fa-arrow-right-from-bracket"></i>
