@@ -31,6 +31,10 @@ function Sidebar() {
       const res = await response.json();
       //we have to store ThreadId's and title threadId use to get previous chat display
 
+      if (!response.ok) {
+        console.log("Thread Error:", res);
+        return;
+      }
       const filteredData = res.map((thread) => ({
         threadId: thread.threadId,
         title: thread.title,

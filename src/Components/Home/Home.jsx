@@ -12,36 +12,32 @@ function Home() {
 
   const backend_URL =
     import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
+
   const handleGuest = async () => {
     try {
       const res = await fetch(`${backend_URL}/api/auth/guest`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
 
       const data = await res.json();
 
-      // Save in context
+      if (!res.ok) {
+        throw new Error(data.message || "Guest login failed");
+      }
+
       setToken(data.token);
       setUser(data.user);
 
-      // Save in localStorage
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      // Redirect
       navigate("/dashboard");
-
-      // Auto logout after 5 mins
-      setTimeout(() => {
-        setToken(null);
-        setUser(null);
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        navigate("/");
-      }, 5 * 60 * 1000);
     } catch (err) {
       console.error("Guest login failed:", err);
+      alert(err.message);
     }
   };
 

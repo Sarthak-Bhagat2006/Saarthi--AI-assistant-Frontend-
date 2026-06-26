@@ -155,10 +155,18 @@ function Register() {
     setIsError(false);
     setErrorMsg("");
 
+    if (form.password !== form.confirm) {
+      setErrorMsg("Passwords do not match");
+      setIsError(true);
+      return;
+    }
+
     try {
       const res = await fetch(`${backend_URL}/api/auth/signUp`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           username: form.name,
           email: form.email,
@@ -167,23 +175,19 @@ function Register() {
       });
 
       const response = await res.json();
-      console.log(response);
 
-      // If error
       if (!response.success) {
-        setErrorMsg(response.message || "Something went wrong");
+        setErrorMsg(response.message);
         setIsError(true);
         return;
       }
 
-      // Save token
-      localStorage.setItem("token", response.token);
-      localStorage.setItem("user", JSON.stringify(response.user));
-
-      navigate("/dashboard");
-      // Mark as logged in
-      setIsLogin(true);
-      window.location.reload();
+      // Go to OTP Verification Page
+      navigate("/verify-email", {
+        state: {
+          email: form.email,
+        },
+      });
     } catch (error) {
       console.log(error);
       setErrorMsg(error.message);
@@ -266,6 +270,18 @@ function Register() {
                 onChange={handleChange}
               />
             </label>
+
+            {!isLogin && (
+              <label className="label">
+                Confirm Password
+                <input
+                  type="password"
+                  name="confirm"
+                  value={form.confirm}
+                  onChange={handleChange}
+                />
+              </label>
+            )}
 
             <div className="error">
               <p>{isError ? errorMsg : ""}</p>
