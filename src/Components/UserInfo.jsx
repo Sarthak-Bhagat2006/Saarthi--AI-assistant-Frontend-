@@ -4,8 +4,12 @@ function UserInfo() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    setUser(storedUser);
+    try {
+      const user = JSON.parse(localStorage.getItem("user") || "null");
+      setUser(user);
+    } catch {
+      setUser(null);
+    }
   }, []);
 
   if (!user) return null;

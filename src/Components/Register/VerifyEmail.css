@@ -1,0 +1,114 @@
+/* FULL PAGE */
+.verify-container {
+  min-height: 100vh;
+  width: 100%;
+  background: #141b2d; /* Same as Saarthi landing page */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* CARD */
+.verify-card {
+  width: 430px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.verify-title {
+  text-align: center;
+  color: #1f2937;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.verify-text {
+  text-align: center;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.verify-email {
+  text-align: center;
+  color: #4f46e5;
+  font-weight: 600;
+  margin: 12px 0 25px;
+}
+
+.verify-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #475569;
+  font-size: 14px;
+}
+
+.verify-input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: 10px;
+  outline: none;
+  color: #111827;
+  transition: 0.2s;
+}
+
+.verify-input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.verify-btn {
+  width: 100%;
+  margin-top: 22px;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: #4f46e5;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.verify-btn:hover {
+  background: #4338ca;
+}
+
+.verify-footer {
+  margin-top: 18px;
+  text-align: center;
+  color: #64748b;
+}
+
+.verify-footer button {
+  border: none;
+  background: transparent;
+  color: #4f46e5;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.verify-footer button:hover {
+  text-decoration: underline;
+}
+
+.verify-error {
+  text-align: center;
+  color: #dc2626;
+  margin-top: 15px;
+}
+
+.verify-success {
+  text-align: center;
+  color: #16a34a;
+  margin-top: 15px;
+}

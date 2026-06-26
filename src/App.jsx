@@ -4,6 +4,7 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import Home from "./Components/Home/Home";
 import NotFound from "./Components/Home/NotFound";
 import Register from "./Components/Register/Register";
+import VerifyEmail from "./Components/Register/VerifyEmail";
 import { MyProvider } from "./Context/MyContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
